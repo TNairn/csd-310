@@ -33,19 +33,19 @@ try:
 
     # Select and display short films
     print()
-    cursor.execute("SELECT * FROM film WHERE film_runtime < 120")
+    cursor.execute("SELECT film_name, film_runtime FROM film WHERE film_runtime < 120")
     films = cursor.fetchall()
     print("-- DISPLAYING Short Film RECORDS --")
     for film in films:
-        print(f"Film Name: {film[1]}\nRuntime: {film[3]}\n")
+        print(f"Film Name: {film[0]}\nRuntime: {film[1]}\n")
 
     # Select and display films ordered by director
     print()
-    cursor.execute("SELECT * FROM film ORDER BY film_director")
+    cursor.execute("SELECT film_name, film_director FROM film ORDER BY film_director")
     films = cursor.fetchall()
     print("-- DISPLAYING Director RECORDS in Order --")
     for film in films:
-        print(f"Film Name: {film[1]}\nDirector: {film[4]}\n")
+        print(f"Film Name: {film[0]}\nDirector: {film[1]}\n")
 
 
 except mysql.connector.Error as err:
